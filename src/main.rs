@@ -34,4 +34,13 @@ fn main() {
         counter = counter + 1;
     }
 
+    let name = "Jacky";
+    match name {
+        "Jack" => println!("oh Jack"),
+        "Jacky" => println!("oh Jacky"),
+        "John" => println!("hi John"),
+        _ => println!("hi stranger!"),
+
+    };
+
 }
