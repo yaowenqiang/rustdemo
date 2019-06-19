@@ -8,9 +8,15 @@ fn main() {
     let tup: (u8, i8, f32) = (1, -1, 3.5);
 
     if x < y {
-        println!("{} is smaller than {}",x, y )
+        println!("{} is smaller than {}",x, y );
+    } else if x == y {
+        println!("{} is equal to  {}",x, y );
     } else {
-        println!("{} is bigger than  than {}",x, y )
+        println!("{} is bigger than  than {}",x, y );
+    }
+
+    loop {
+        println!("Rust");
     }
 
 }
