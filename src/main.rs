@@ -43,4 +43,33 @@ fn main() {
 
     };
 
+    let name: &str = "Rust";
+    let names2: &'static str = "Rust21";
+    let mut some_string = String::new();
+    some_string = "Some String".to_string();
+    let string_slice = &some_string;
+    let arrays = [1,2,3,4];
+
+    //array.len();
+
+    for a in arrays.iter() {
+        println!("a is {}", a);
+    }
+
+    let mut vector1:  Vec<i32> = Vec::new();
+    let mut vector2:  Vec<i32> = vec![1,2,3,4,5];
+    let mut vector3:  Vec<bool> = Vec::with_capacity(10);
+
+    let values = vec![1,2,3];
+
+    for a in values {
+        println!("a is {}", a)
+    }
+
+    let array2 = ["This", "is", "an", "array"];
+    let array_slice = &array[1..4];
+
+
+
+
 }
