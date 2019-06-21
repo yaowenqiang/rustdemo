@@ -67,7 +67,23 @@ fn main() {
     }
 
     let array2 = ["This", "is", "an", "array"];
-    let array_slice = &array[1..4];
+    let array_slice = &array2[1..4];
+
+    let z = 2;
+    {
+        let z = 3;
+    }
+    println!("{}", z);
+
+    let mut string1: String  = String::new();
+    string1 = "A string".to_string();
+    //let string2 = string1; will produce an  error
+    let string2 = &string1;
+    println!("{}",string2);
+    println!("{}",string1);
+
+
+
 
 
 
