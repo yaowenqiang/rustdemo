@@ -1,10 +1,9 @@
-mod some_module {
-    pub fn say_hello() {
-        println!("hello world");
-    }
+mod my;
 
-} /* some_module */
-
+fn say_hello()
+{
+    print!("hello world");
+}
 fn multiplication(a:i32, b:i32) -> i32 {
     a * b
 }
@@ -98,11 +97,6 @@ fn main() {
 
     println!("{:?}",multiplication(x,y));
     multiplication_print_result(x, y);
-    some_module::say_hello();
-
-
-
-
-
-
+    say_hello();
+    my::say_hello();
 }
