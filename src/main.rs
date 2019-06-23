@@ -1,3 +1,10 @@
+fn multiplication(a:i32, b:i32) -> i32 {
+    a * b
+}
+fn multiplication_print_result(x: i32, y: i32) {
+   // println!("{:?}", x*y );
+    println!("{:?}", multiplication(x, y));
+}
 fn main() {
     //let x = 5;
     let mut x = 5;
@@ -82,6 +89,8 @@ fn main() {
     println!("{}",string2);
     println!("{}",string1);
 
+    println!("{:?}",multiplication(x,y));
+    multiplication_print_result(x, y);
 
 
 
