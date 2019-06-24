@@ -1,4 +1,11 @@
+#[derive[debug]]
 mod my;
+
+struct User {
+    name: String,
+    email: String,
+    age: i16
+}
 
 fn say_hello()
 {
@@ -99,5 +106,12 @@ fn main() {
     multiplication_print_result(x, y);
     say_hello();
     my::say_hello();
+
+    let new_user = User{
+        name:"Dave".to_string(),
+        email: "dave@email.com".to_string(),
+        age: 32
+    };
     
+    println!("{:?}", new_user);
 }
