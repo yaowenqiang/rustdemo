@@ -1,6 +1,6 @@
-#[derive[debug]]
 mod my;
 
+#[derive(Debug)]
 struct User {
     name: String,
     email: String,
@@ -114,4 +114,6 @@ fn main() {
     };
     
     println!("{:?}", new_user);
+    // pretty print 
+    println!("{:#?}", new_user);
 }
