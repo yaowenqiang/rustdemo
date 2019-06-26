@@ -4,7 +4,8 @@ mod my;
 struct User {
     name: String,
     email: String,
-    age: i16
+    age: i16,
+    user_type: UserType::Regular
 }
 
 impl User{
@@ -13,6 +14,14 @@ impl User{
         println!("HIs email is  {}.\n", self.email);
         println!("He is {} years old.\n", self.age);
     }
+}
+
+
+#[derive(Debug)]
+enum UserType{
+    Guest,
+    Regular,
+    Admin
 }
 
 fn say_hello()
@@ -27,6 +36,8 @@ fn multiplication_print_result(x: i32, y: i32) {
     println!("{:?}", multiplication(x, y));
 }
 fn main() {
+    let user_type = UserType::Regular;
+    println!("user type is {:?}\n", user_type);
     //let x = 5;
     let mut x = 5;
     let y = 7;
