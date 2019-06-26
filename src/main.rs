@@ -7,6 +7,14 @@ struct User {
     age: i16
 }
 
+impl User{
+    pub fn print_user(self) {
+        println!("The name of the user is {}.\n", self.name);
+        println!("HIs email is  {}.\n", self.email);
+        println!("He is {} years old.\n", self.age);
+    }
+}
+
 fn say_hello()
 {
     print!("hello world");
@@ -116,4 +124,6 @@ fn main() {
     println!("{:?}", new_user);
     // pretty print 
     println!("{:#?}", new_user);
+
+    new_user.print_user();
 }
