@@ -5,7 +5,7 @@ struct User {
     name: String,
     email: String,
     age: i16,
-    user_type: UserType::Regular
+    user_type: UserType
 }
 
 impl User{
@@ -129,7 +129,8 @@ fn main() {
     let new_user = User{
         name:"Dave".to_string(),
         email: "dave@email.com".to_string(),
-        age: 32
+        age: 32,
+        user_type: UserType::Guest
     };
     
     println!("{:?}", new_user);
