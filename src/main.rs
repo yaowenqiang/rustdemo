@@ -1,5 +1,7 @@
 mod my;
-
+extern crate some_crate;
+//mod my;
+/*
 #[derive(Debug)]
 struct User {
     name: String,
@@ -23,7 +25,7 @@ enum UserType{
     Regular,
     Admin
 }
-
+*/
 fn say_hello()
 {
     print!("hello world");
@@ -36,7 +38,7 @@ fn multiplication_print_result(x: i32, y: i32) {
     println!("{:?}", multiplication(x, y));
 }
 fn main() {
-    let user_type = UserType::Regular;
+    let user_type = some_crate::UserType::Regular;
     println!("user type is {:?}\n", user_type);
     //let x = 5;
     let mut x = 5;
@@ -126,11 +128,11 @@ fn main() {
     say_hello();
     my::say_hello();
 
-    let new_user = User{
+    let new_user = some_crate::User{
         name:"Dave".to_string(),
         email: "dave@email.com".to_string(),
         age: 32,
-        user_type: UserType::Guest
+        user_type: some_crate::UserType::Guest
     };
     
     println!("{:?}", new_user);

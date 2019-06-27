@@ -1,4 +1,11 @@
 [[package]]
 name = "immutability"
 version = "0.1.0"
+dependencies = [
+ "some_crate 0.1.0",
+]
+
+[[package]]
+name = "some_crate"
+version = "0.1.0"
 
