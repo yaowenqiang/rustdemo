@@ -1,5 +1,14 @@
 mod my;
 extern crate some_crate;
+//use some_crate::User;
+
+
+struct UserCollection<T,P>
+{
+    name: String,
+    users: Vec<P>,
+    size: T
+}
 
 #[should_panic]
 #[test]
@@ -148,10 +157,22 @@ fn main() {
         age: 32,
         user_type: some_crate::UserType::Guest
     };
-    
     println!("{:?}", new_user);
     // pretty print 
     println!("{:#?}", new_user);
+    let new_user2 = some_crate::User{
+        name:"Dave".to_string(),
+        email: "dave@email.com".to_string(),
+        age: 32,
+        user_type: some_crate::UserType::Guest
+    };
+    let user_collection: UserCollection<u8, some_crate::User> = UserCollection{
+        name: "user collection 1".to_string(),
+        users: vec![new_user2],
+        size: 1
+    };
+    
 
     new_user.print_user();
+    println!("{:?}", user_collection.users);
 }
