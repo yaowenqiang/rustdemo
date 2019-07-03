@@ -1,4 +1,6 @@
 mod my;
+use std::thread;
+
 extern crate some_crate;
 //use some_crate::User;
 #[derive(Debug)]
@@ -254,4 +256,14 @@ fn main() {
     println!("{:#?}", goblin);
     goblin.strike();
     println!("{:#?}", goblin);
+
+    let thread_1 = thread::spawn(|| {
+        "Hello"
+    });
+    let thread_2 = thread::spawn(|| {
+        "World"
+    });
+    thread::sleep(std::time::Duration::from_millis(100));
+    println!("{:?}", thread_1.join().unwrap());
+    println!("{:?}", thread_2.join().unwrap());
 }
