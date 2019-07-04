@@ -4,5 +4,8 @@ version = "0.1.0"
 authors = ["yaowenqiang <yaowenqiang111@163.com>"]
 edition = "2018"
 
+[dependencies]
+rand = "0.4"
+
 [dependencies.some_crate]
 path="src/some_crate"
