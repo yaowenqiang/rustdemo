@@ -1,11 +1,13 @@
 extern crate rand;
 use rand::Rng;
 #[derive(Clone)]
+#[derive(Debug)]
 pub struct Mine{
     position: (u32, u32),
     active: bool
 }
 
+#[derive(Debug)]
 pub struct MineField {
     pub size: (u32, u32),
     pub mines: Vec<Mine>
@@ -23,7 +25,7 @@ impl MineField{
     }
     fn generate_empty_fields(&mut self)  {
         let mut x = self.size.0;
-        let mut y = self.size.0;
+        let mut y = self.size.1;
         while x > 0 {
             while y > 0 {
                 let mine = Mine {

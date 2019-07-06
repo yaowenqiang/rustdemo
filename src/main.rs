@@ -278,7 +278,9 @@ fn main() {
     };
 
     &mine_field.generate_mines();
+    println!("{:#?}", mine_field);
     mine_field.print_fields();
+
 
     let mut xx = 0;
     let mut yy = 0;
