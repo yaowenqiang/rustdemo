@@ -1,5 +1,10 @@
+mod structs;
+extern crate rand;
+use rand::Rng;
+use structs::MineField;
 mod my;
 use std::thread;
+use std::io::stdin;
 
 extern crate some_crate;
 //use some_crate::User;
@@ -266,4 +271,50 @@ fn main() {
     thread::sleep(std::time::Duration::from_millis(100));
     println!("{:?}", thread_1.join().unwrap());
     println!("{:?}", thread_2.join().unwrap());
+
+    let mut mine_field = MineField {
+        size: (3,4),
+        mines: Vec::new(),
+    };
+
+    &mine_field.generate_mines();
+    mine_field.print_fields();
+
+    let mut xx = 0;
+    let mut yy = 0;
+    println!("You have five tries");
+    let mut counter = 1;
+    
+    loop {
+        if counter ==  5 {
+            println!("coungrats, you've won!");
+            break;
+        }
+        println!("Enter cooridate x: ");
+        let mut input_x = String::new();
+        stdin().read_line(&mut input_x);
+        let trimmed_x = input_x.trim();
+        match trimmed_x.parse::<u32>(){
+            Ok(i) => xx = i,
+            Err(..) => println!("This was not an integer: {}", trimmed_x)
+        };
+
+        println!("Enter cooridate y: ");
+        let mut input_y = String::new();
+        stdin().read_line(&mut input_y);
+        let trimmed_y = input_y.trim();
+        match trimmed_y.parse::<u32>(){
+            Ok(i) => yy = i,
+            Err(..) => println!("This was not an integer: {}", trimmed_y)
+        };
+
+        if mine_field.find_by_coordinates(xx,yy)  {
+            println!("The game is over:(");
+            break;
+        }
+        counter = counter + 1;
+    }
+    println!("The mines are marked with o!");
+
+    &mine_field.print_fields_solved();
 }

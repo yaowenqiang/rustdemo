@@ -28,24 +28,21 @@ impl MineField{
             while y > 0 {
                 let mine = Mine {
                     position: (x-1, y-1),
-                    active: false,
-                }
+                    active: false
+                };
                 &self.mines.push(mine);
-                y + y -1;
+                y = y -1;
             }
              y = self.size.1;
-
-             x = x -1;
+             x = x - 1;
         }
     }
     
     pub fn generate_mines(&mut self) {
         &self.generate_empty_fields();
         for element in self.mines.iter_mut() {
-            if 1 == rand::thread.iter_nut() {
-                if 1 == rand::threed_rng().gen_range(0,3) {
-                    (*element).active = true;  
-                }
+            if 1 == rand::thread_rng().gen_range(0,3) {
+                (*element).active = true;  
             }
         }
         &self.mines.reverse();
@@ -59,25 +56,23 @@ impl MineField{
                 println!("");
             }
         }
-
         println!("");
-
     }
 
     pub fn print_fields_solved(&self) {
         let y = self.size.1;
         for i in self.mines.iter() {
-            print!("x");
-            if (y - 1) == i.position.1  {
-                println!("");
-            }
             if i.active  {
                 print!("o");
             } else {
                 print!("x");
             }
-        }
 
+            if (y - 1) == i.position.1  {
+                println!("");
+            }
+        }
         println!("");
     }
+
 }
