@@ -5,6 +5,7 @@ use structs::MineField;
 mod my;
 use std::thread;
 use std::io::stdin;
+use std::mem;
 
 extern crate some_crate;
 //use some_crate::User;
@@ -319,4 +320,7 @@ fn main() {
     println!("The mines are marked with o!");
 
     &mine_field.print_fields_solved();
+
+    let c = 123456789;
+    println!("c = {} size = {} bytes", c, mem::size_of_val(&c));
 }
