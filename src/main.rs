@@ -340,12 +340,40 @@ fn main() {
     println!("g = {} size = {} bytes", g, mem::size_of_val(&g));
     operators();
 
-
-
 }
 
 fn operators() {
    let a = 1000;
    let a_cubed = i32::pow(a, 3); 
    println!("{}", a_cubed);
+   let b = 2.5;
+   let b_cubed = f64::powi(b,3);
+   println!("{}", b_cubed);
+
+   let b_to_pi = f64::powf(b, std::f64::consts::PI);
+   println!("{}", b_to_pi);
+   println!("{}", b * 2.0);
+   println!("{}",f64::powf(b, 2.0));
+
+   //bitwise
+   let c = 1 | 2; // | RO & AND ^ XOR ! NOR
+                  // 01 OR 10 = 11 = 3_10
+   println!("{}", c);
+
+   let tow_to_10 = 1 << 10; // >> 
+   println!("{}", tow_to_10);
+
+   //logical
+   let pi_less_4 = std::f64::consts::PI < 4.0;//true
+   println!("{}", pi_less_4);
+
+   let x = 3;
+   let x_is_f = x == 5;
+   println!("{}", x_is_f);
+
+
+
+   
+
+
 }
