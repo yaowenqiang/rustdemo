@@ -321,6 +321,19 @@ fn main() {
 
     &mine_field.print_fields_solved();
 
-    let c = 123456789;
+    let mut c = 123456789;
     println!("c = {} size = {} bytes", c, mem::size_of_val(&c));
+    c = -1;
+    println!("c = {} after modification", c);
+    let z:isize = 123; //isize/usize
+    let size_of_z = mem::size_of_val(&z);
+    println!("z = {}, takes up {} bytes, {}-bit-os", z, size_of_z, size_of_z * 8);
+
+    let d:char = 'x';
+    println!("d = {} size = {} bytes", d, mem::size_of_val(&d));
+
+    let e = 2.5; //double-presision, 8 bytes or 64 bites, f64
+    println!("e = {} size = {} bytes", e, mem::size_of_val(&e));
+
+
 }
