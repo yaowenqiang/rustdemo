@@ -287,7 +287,7 @@ fn main() {
     let mut yy = 0;
     println!("You have five tries");
     let mut counter = 1;
-    
+   /* 
     loop {
         if counter ==  5 {
             println!("coungrats, you've won!");
@@ -321,6 +321,7 @@ fn main() {
 
     &mine_field.print_fields_solved();
 
+    */
     let mut c = 123456789;
     println!("c = {} size = {} bytes", c, mem::size_of_val(&c));
     c = -1;
@@ -335,5 +336,16 @@ fn main() {
     let e = 2.5; //double-presision, 8 bytes or 64 bites, f64
     println!("e = {} size = {} bytes", e, mem::size_of_val(&e));
 
+    let g = false;
+    println!("g = {} size = {} bytes", g, mem::size_of_val(&g));
+    operators();
 
+
+
+}
+
+fn operators() {
+   let a = 1000;
+   let a_cubed = i32::pow(a, 3); 
+   println!("{}", a_cubed);
 }
