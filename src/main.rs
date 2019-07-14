@@ -1,4 +1,5 @@
 mod structs;
+mod sh;
 extern crate rand;
 use rand::Rng;
 use structs::MineField;
@@ -402,4 +403,5 @@ fn scop_and_shadowing() {
         Z = 777;
         println!("{}", Z);
     }
+    sh::stack_and_heap();
 }
