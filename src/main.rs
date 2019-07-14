@@ -7,6 +7,10 @@ use std::thread;
 use std::io::stdin;
 use std::mem;
 
+const MEANING_OF_LIFE  :u8 = 42; // no  fixed address
+
+static mut Z:i32 = 123;
+
 extern crate some_crate;
 //use some_crate::User;
 #[derive(Debug)]
@@ -375,6 +379,10 @@ fn operators() {
    
    scop_and_shadowing();
 
+   unsafe{
+        Z = 888;
+       println!("{}", Z);
+   }
 
 }
 fn scop_and_shadowing() {
@@ -388,4 +396,10 @@ fn scop_and_shadowing() {
         println!("b = {}", b);
     }
     println!("a = {}", a);
+    println!("{}", MEANING_OF_LIFE);
+    unsafe
+    {
+        Z = 777;
+        println!("{}", Z);
+    }
 }
