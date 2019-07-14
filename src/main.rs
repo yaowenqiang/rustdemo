@@ -371,9 +371,21 @@ fn operators() {
    let x_is_f = x == 5;
    println!("{}", x_is_f);
 
-
-
+   //scope and shadowing
    
+   scop_and_shadowing();
 
 
+}
+fn scop_and_shadowing() {
+    let a = 123;
+    let a = 456;
+    {
+        println!("inner a = {}", a);
+        let a = 789;
+        println!("inner a = {}", a);
+        let b = 456;
+        println!("b = {}", b);
+    }
+    println!("a = {}", a);
 }
