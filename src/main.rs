@@ -221,7 +221,7 @@ fn main() {
         user_type: some_crate::UserType::Guest
     };
     println!("{:?}", new_user);
-    // pretty print 
+    // pretty print
     println!("{:#?}", new_user);
     let new_user2 = some_crate::User{
         name:"Dave".to_string(),
@@ -234,7 +234,7 @@ fn main() {
         users: vec![new_user2],
         size: 1
     };
-    
+
 
     new_user.print_user();
     println!("{:?}", user_collection.users);
@@ -292,7 +292,7 @@ fn main() {
     let mut yy = 0;
     println!("You have five tries");
     let mut counter = 1;
-   /* 
+   /*
     loop {
         if counter ==  5 {
             println!("coungrats, you've won!");
@@ -349,7 +349,7 @@ fn main() {
 
 fn operators() {
    let a = 1000;
-   let a_cubed = i32::pow(a, 3); 
+   let a_cubed = i32::pow(a, 3);
    println!("{}", a_cubed);
    let b = 2.5;
    let b_cubed = f64::powi(b,3);
@@ -365,7 +365,7 @@ fn operators() {
                   // 01 OR 10 = 11 = 3_10
    println!("{}", c);
 
-   let tow_to_10 = 1 << 10; // >> 
+   let tow_to_10 = 1 << 10; // >>
    println!("{}", tow_to_10);
 
    //logical
@@ -377,13 +377,17 @@ fn operators() {
    println!("{}", x_is_f);
 
    //scope and shadowing
-   
+
    scop_and_shadowing();
 
    unsafe{
         Z = 888;
        println!("{}", Z);
    }
+
+   let tmp = 20;
+   let day = if tmp > 20 {"sunny"}  else {"cloudy"};
+   println!("{}", day);
 
 }
 fn scop_and_shadowing() {
