@@ -427,4 +427,22 @@ fn while_and_loop()
         println!("y = {}", y);
         if y == 1<<10 {break;}
     }
+    for_loop();
+}
+
+fn for_loop()
+{
+    for x in 1..11 {
+
+        if x == 5 { continue;}
+
+        if x == 8 { break;}
+
+        println!("x = {}",x);
+    }
+
+    for (pos, y) in (30..41).enumerate()
+    {
+        println!("{} => {}", pos, y);
+    }
 }
