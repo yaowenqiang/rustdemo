@@ -428,6 +428,7 @@ fn while_and_loop()
         if y == 1<<10 {break;}
     }
     for_loop();
+    match_statement();
 }
 
 fn for_loop()
@@ -445,4 +446,18 @@ fn for_loop()
     {
         println!("{} => {}", pos, y);
     }
+
+}
+fn match_statement()
+{
+    let country_code = 1000;
+    let country = match country_code 
+    {
+        44 => "UK",
+        46 => "Sweden",
+        7 => "Russia",
+        1...999 => "unknown",  // 999 is included
+        _ => "invalid"
+    };
+    println!("The country with code {} is {}", country_code, country);
 }
