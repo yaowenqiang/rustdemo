@@ -355,6 +355,7 @@ fn main() {
     strings();
     tuples();
     pm::pattern_match();
+    generics();
 }
 
 fn operators() {
@@ -792,9 +793,64 @@ fn tuples ()
 
     let single_tuple2 = (42, );
     println!("{:?}", single_tuple2);
-
-
-
 }
 
+
+struct Point2 {
+    x: f64,
+    y: f64 
+}
+#[derive(Debug)]
+struct Point3<T> {
+    x: T,
+    y: T 
+}
+
+#[derive(Debug)]
+struct Point4<T, V> {
+    x: T,
+    y: V 
+}
+
+#[derive(Debug)]
+struct Point5<T> {
+    x: T,
+    y: T 
+}
+#[derive(Debug)]
+struct Line2<T>
+{
+    start: Point5<T>,
+    end: Point5<T>
+}
+
+fn generics() 
+{
+   //let a = Point3{x:0, y:0}; 
+   //let a:Point3<i32> = Point3{x: 0, y:0 }; 
+   //let a:Point3<u16> = Point3{x: 0, y:1 }; 
+   let a:Point3<u16> = Point3{x: 0, y:1 }; 
+   //let b:Point3<f64> = Point3{x:1.2, y:1.4}; 
+   let b:Point3<f64> = Point3{x:1.2, y:1.4}; 
+
+   let c = Point3{x: 10, y:11 }; 
+   let d = Point3{x: 10.0, y:11.0 }; 
+
+   let e:Point4<i32,f64> = Point4{x: 12, y:13.0 }; 
+   let f:Point4<f64,i32> = Point4{x: 12.0, y:13 }; 
+   println!("{:?}", a);
+   println!("{:?}", b);
+   println!("{:?}", c);
+   println!("{:?}", d);
+   println!("{:?}", e);
+   println!("{:?}", f);
+
+   //let g = Point5{x:0, y:4};
+   //let h = Point5{x:0.0, y:4.0};
+//   let g:Point5<f64> = Point5{x:1.0, y:4.0};
+   let g:Point5<f64> = Point5{x:1.0, y:4f64};
+   let h:Point5<f64> = Point5{x:0.0, y:4.0};
+   let myline2 = Line2{start:g ,end: h};
+   println!("{:?}", myline2);
+}
 
