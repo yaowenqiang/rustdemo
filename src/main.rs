@@ -352,6 +352,7 @@ fn main() {
     vectors();
     slices();
     strings();
+    tuples();
 }
 
 fn operators() {
@@ -752,4 +753,45 @@ fn strings ()
 
 }
 
+fn sum_and_product(x:i32, y:i32) -> (i32, i32)
+{
+    (x + y, x * y)
+}
+
+fn tuples ()
+{
+    let x = 3;
+    let y = 4;
+    let sp = sum_and_product(x, y);
+    println!("{:?}", sp);
+    println!("{0} +  {1} =  {2}, {0} * {1} = {3}", x, y, sp.0, sp.1);
+
+    //Destructing
+
+    let (a, b) =  sp;
+    println!("{0} +  {1} =  {2}, {0} * {1} = {3}", x, y, a, b);
+
+    let sp2 = sum_and_product(4,7);
+
+    let combined = (sp, sp2);
+    println!("{:?}", combined);
+
+
+    println!("last elem = {}", (combined.1).1);
+
+    let ((c,d),(e,f)) = combined;
+    println!("{},{},{},{}", c,d,e,f);
+
+    let foo = (true, 42.0, -1i8);
+    println!("{:?}", foo);
+
+    let single_tuple = (42);
+    println!("{:?}", single_tuple);
+
+    let single_tuple2 = (42, );
+    println!("{:?}", single_tuple2);
+
+
+
+}
 
