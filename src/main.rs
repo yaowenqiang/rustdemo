@@ -346,7 +346,7 @@ fn main() {
     operators();
     while_and_loop();
     enums();
-
+    unions();
 }
 
 fn operators() {
@@ -536,5 +536,39 @@ fn enums() {
         Color::RgbColor(r,g,b) => println!("rgb({}, {}, {})", r, g, b),
         _ => println!("some other color")
     }
+
+}
+
+union IntOrFloat {
+    i: i32,
+    f: f32
+}
+
+
+fn process_value(iof: IntOrFloat)
+{
+    unsafe
+    {
+        match iof {
+            IntOrFloat { i:42} =>  {println!("meaning of life");},
+            IntOrFloat { f} =>  {println!("f32 = {}", f);},
+        }
+    }
+}
+fn unions () {
+    let mut iof = IntOrFloat{
+        i:32
+    };
+    unsafe {
+        iof.i = 42;
+    }
+    let mut iof2 = IntOrFloat{
+        f:32.0
+    };
+    unsafe {
+        iof2.f = 42.0;
+    }
+    process_value(iof);
+    process_value(iof2);
 
 }
