@@ -349,6 +349,7 @@ fn main() {
     unions();
     option();
     arrays_fn();
+    vectors();
 }
 
 fn operators() {
@@ -631,6 +632,46 @@ fn arrays_fn()
         }
     }
 
+}
+
+fn vectors () {
+    //usize isize
+    //let idx:u32 = -1;
+    //let idx:u32 = 1;
+    let idx:usize = 0;
+    let mut a = Vec::new();
+    a.push(1);
+    a.push(2);
+    a.push(3);
+    println!("a = {:?}",a );
+    a.push(44);
+    a[idx] = 34343;
+    println!("a = {:?}",a );
+    println!("a[0] = {}",a[0] );
+    println!("a[0] = {}",a[idx] );
+
+    //return Option type
+    match a.get(6) {
+        Some(x) => println!("a[6] = {}",x),
+        None => println!("error, No such element")
+    }
+
+    for x in &a {
+        println!("{}", x);
+    }
+    a.push(44);
+    for x in &a {
+        println!("{}", x);
+    }
+
+    let last_elem = a.pop();
+    println!("last eleme is {:?}, a = {:?}", last_elem, a);
+
+    while let Some(x) = a.pop()
+    {
+        println!("{}", x);
+    }
+    println!("last eleme is {:?}, a = {:?}", last_elem, a);
 
 
 
