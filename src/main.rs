@@ -1,5 +1,6 @@
 mod structs;
 mod sh;
+mod pm;
 extern crate rand;
 use rand::Rng;
 use structs::MineField;
@@ -353,6 +354,7 @@ fn main() {
     slices();
     strings();
     tuples();
+    pm::pattern_match();
 }
 
 fn operators() {
@@ -794,4 +796,5 @@ fn tuples ()
 
 
 }
+
 
