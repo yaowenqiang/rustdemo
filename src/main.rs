@@ -429,6 +429,8 @@ fn while_and_loop()
     }
     for_loop();
     match_statement();
+    structures();
+    lines();
 }
 
 fn for_loop()
@@ -460,4 +462,48 @@ fn match_statement()
         _ => "invalid"
     };
     println!("The country with code {} is {}", country_code, country);
+}
+fn structures ()
+{
+    let p = Point {
+        x:3.0,
+        y:4.0
+    };
+
+    let p2 = Point {
+        x:10.0,
+        y:20.0
+    };
+    println!("point p is a  ({},{})",p.x, p.y);
+}
+
+fn lines() {
+    let p = Point {
+        x:3.0,
+        y:4.0
+    };
+
+    let p2 = Point {
+        x:10.0,
+        y:20.0
+    };
+    let myline = Line {
+        start: p,
+        end: p2
+    };
+
+    println!("myline  starts at  ({},{}), ends at ({},{})",myline.start.x, myline.start.y, myline.end.x, myline.end.y);
+
+
+
+}
+struct Point {
+    x: f64,
+    y: f64
+}
+
+
+struct Line {
+    start: Point,
+    end: Point
 }
