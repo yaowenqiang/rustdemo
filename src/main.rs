@@ -351,6 +351,7 @@ fn main() {
     arrays_fn();
     vectors();
     slices();
+    strings();
 }
 
 fn operators() {
@@ -692,6 +693,62 @@ fn slices ()
     //use_slice(&mut data[1..4]);
     use_slice(&mut data);
     println!("{:?}", data);
+
+}
+
+fn strings ()
+{
+
+    let s:&'static str = "hello你好"; // &str = string slice
+    // s = "abc你好";
+
+    for s in s.chars() {
+        println!("{}", s);
+    }
+
+    for s in s.chars().rev() {
+        println!("{}", s);
+    }
+
+    let c = "a";
+    let d = "你";
+    println!("size of c {}: {}", c, mem::size_of_val(c));
+    println!("size of d {} : {}", d, mem::size_of_val(c));
+
+    if let Some(first_letter) = s.chars().nth(0) {
+        println!("first letter is {}", first_letter);
+    }
+
+    //String
+
+    let mut letters = String::new();
+    let mut a = 'a' as u8;
+    while a <= ('z' as u8) {
+        letters.push(a as char);
+        letters.push_str(",");
+        a += 1;
+    }
+
+    println!("{:?}", letters);
+
+    //str <> String
+
+    //let u:&'str = &letters;
+
+    //concatencation
+    //String + str
+    let z = letters + "abc";
+
+    println!("{}", z);
+    //let zz = letters + letters;
+    //println!("{}", zz);
+
+    let mut abc = String::from("Hello World");
+    let mut def = "Hello world".to_string();
+    abc.remove(0);
+    println!("{}", abc);
+    abc.push_str("!!!");
+    println!("{}",abc.replace("ello","goodbye"));
 
 }
 
