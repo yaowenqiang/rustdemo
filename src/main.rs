@@ -345,6 +345,7 @@ fn main() {
     println!("g = {} size = {} bytes", g, mem::size_of_val(&g));
     operators();
     while_and_loop();
+    enums();
 
 }
 
@@ -506,4 +507,34 @@ struct Point {
 struct Line {
     start: Point,
     end: Point
+}
+
+enum Color {
+    Red,
+    Green,
+    Blue,
+    RgbColor(u8, u8, u8), //tuple
+    Cmyk {
+        cyan: u8,
+        magenta:u8,
+        yellow: u8,
+        black: u8
+    }, //struct
+}
+fn enums() {
+    //let c:Color = Color::Red;
+    //let c:Color = Color::RgbColor(0,0,0);
+    //let c:Color = Color::RgbColor(255,255,255);
+    let c:Color = Color::Cmyk{cyan:0, magenta:128, yellow:1, black: 255};
+    match c {
+        Color::Red => println!("R"),
+        Color::Green => println!("G"),
+        //_ => println!("some other color")
+        Color::Blue => println!("B"),
+        Color::RgbColor(0,0,0) => println!("Black"),
+        Color::Cmyk{cyan:_, magenta:_, yellow:_, black: 255} => println!("black"),
+        Color::RgbColor(r,g,b) => println!("rgb({}, {}, {})", r, g, b),
+        _ => println!("some other color")
+    }
+
 }
