@@ -357,6 +357,7 @@ fn main() {
     pm::pattern_match();
     generics();
     functions();
+    methods();
 }
 
 fn operators() {
@@ -880,3 +881,18 @@ fn functions ()
     println!("product 3 and 4 = {}", product(3,4));
 }
 
+impl Line {
+    fn len(&self) -> f64
+    {
+       let dx = self.start.x - self.end.x; 
+       let dy = self.start.y - self.end.y; 
+       (dx*dx +  dy * dy).sqrt()
+    }
+}
+fn methods ()
+{
+    let p = Point{x:1f64, y:2f64};
+    let p1 = Point{x:3f64, y:4f64};
+    let myline = Line{start:p, end:p1};
+    println!("length = {}", myline.len());
+}
