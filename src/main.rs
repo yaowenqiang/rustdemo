@@ -347,6 +347,7 @@ fn main() {
     while_and_loop();
     enums();
     unions();
+    option();
 }
 
 fn operators() {
@@ -570,5 +571,26 @@ fn unions () {
     }
     process_value(iof);
     process_value(iof2);
-
 }
+
+fn option ()
+{
+    //Option<T>
+    let x = 3.0;
+    //let y = 2.0;
+    let y = 0.0;
+
+    // Some(z) None)
+    
+    let result:Option<f64> = 
+        if y != 0.0 {Some(x/y)} else {None};
+    println!("{:?}", result);
+    match result {
+        Some(z) => println!("{}/{} = {}", x,y,z),
+        None => println!("can not divide {} by {} ", x,y)
+    }
+    // if let / while let
+    if let Some(z) = result{println!("z = {}", z)};
+}
+
+
