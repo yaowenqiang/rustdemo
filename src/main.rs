@@ -356,6 +356,7 @@ fn main() {
     tuples();
     pm::pattern_match();
     generics();
+    functions();
 }
 
 fn operators() {
@@ -852,5 +853,30 @@ fn generics()
    let h:Point5<f64> = Point5{x:0.0, y:4.0};
    let myline2 = Line2{start:g ,end: h};
    println!("{:?}", myline2);
+}
+
+
+fn increse(x:&mut i32)
+{
+    *x = 100;
+}
+
+fn product(x: i32, y: i32) -> i32
+{
+    x * y
+}
+
+fn print_value(x:i32)
+{
+    println!("Value =  {}", x);
+    let mut z = 1;
+    increse(&mut z);
+    println!("Value =  {}", z);
+}
+
+fn functions ()
+{
+    print_value(2) ;   
+    println!("product 3 and 4 = {}", product(3,4));
 }
 
