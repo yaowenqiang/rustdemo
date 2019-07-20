@@ -115,7 +115,7 @@ enum UserType{
 */
 fn say_hello()
 {
-    print!("hello world");
+    println!("hello world");
 }
 fn multiplication(a:i32, b:i32) -> i32 {
     a * b
@@ -358,6 +358,8 @@ fn main() {
     generics();
     functions();
     methods();
+    closures();
+    hof();
 }
 
 fn operators() {
@@ -895,4 +897,69 @@ fn methods ()
     let p1 = Point{x:3f64, y:4f64};
     let myline = Line{start:p, end:p1};
     println!("length = {}", myline.len());
+}
+
+
+fn closures()
+{
+    let sh = say_hello;
+    sh();
+    let plus_one = | x:i32 |-> i32 {
+        x + 1
+    };
+
+    let p = plus_one(1);
+    println!("{}", p);
+    let mut two = 2;
+    {
+        let plus_two = | x | {
+            let mut z = x;
+            z += two;
+            z
+        };
+        println!("2 + 2 = {}", plus_two(2));
+    }
+    let borrow_two = &mut two;
+    println!("borrow_two = {}" ,borrow_two);
+
+    // T by value
+    // T&
+    // &mut
+
+    let plus_three = | x: &mut i32 | *x += 3;
+    /*
+    let plus_three = | x: &mut i32 |  {
+        *x += 3;
+    };
+    */
+    let mut f = 12;
+    plus_three(&mut f);
+    println!("f = {}", f);
+}
+
+fn is_even (x: i32) -> bool
+{
+    x %2 == 0
+}
+// higher order function
+fn hof()
+{
+    let limit = 500;
+    let mut sum = 0;
+    for i in 0..
+    {
+        let isq = i * i;
+        if isq > limit {break;}
+        else if  is_even(isq) { sum += isq; }
+
+    }
+    println!("the sum is {}", sum);
+
+    let sum2 = 
+        (0..).map(|x| x * x )
+             .take_while(|&x| x < limit)
+             .filter(|x| is_even(*x))
+             .fold(0, |sum, x | sum + x);
+
+    println!("the sum is {}", sum2);
 }
