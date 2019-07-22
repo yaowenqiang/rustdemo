@@ -1,3 +1,8 @@
+#[allow(dead_code)]
+#[allow(unused_variables)]
+
+
+
 mod structs;
 mod sh;
 mod pm;
@@ -8,6 +13,7 @@ mod my;
 use std::thread;
 use std::io::stdin;
 use std::mem;
+use std::ops::Add;
 
 const MEANING_OF_LIFE  :u8 = 42; // no  fixed address
 
@@ -361,6 +367,11 @@ fn main() {
     closures();
     hof();
     traits();
+
+    let p = Point{x:1.0, y:2.0};
+    let p1 = Point{x:1.5, y:2.5};
+    let p2 = p + p1;
+    println!("{:?}", p2);
 }
 
 fn operators() {
@@ -512,6 +523,8 @@ fn lines() {
 
 
 }
+
+#[derive(Debug)]
 struct Point {
     x: f64,
     y: f64
@@ -1022,5 +1035,15 @@ fn traits()
 
    let a = vec![1,2,3];
    println!("sum = {}", a.sum());
-
 }
+
+impl Add for Point
+{
+    type Output = Point;
+    fn add(self,  other:Point) -> Point
+    {
+        Point{x: self.x + other.x, y: self.y + other.y}
+    }
+}
+
+
