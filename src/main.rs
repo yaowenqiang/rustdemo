@@ -372,6 +372,12 @@ fn main() {
     let p1 = Point{x:1.5, y:2.5};
     let p2 = p + p1;
     println!("{:?}", p2);
+    let ap = 123;
+    let bp = "hello".to_string();
+    println!("{}", ap.format());
+    println!("{}", ap.format());
+    print_it(ap);
+    print_it(bp);
 }
 
 fn operators() {
@@ -1046,4 +1052,37 @@ impl Add for Point
     }
 }
 
+trait Printable {
+    fn format(&self) -> String;
+}
+
+impl Printable for i32
+{
+    fn format(&self) -> String 
+    {
+        format!("i32: {}", &self)
+    }
+}
+
+impl Printable for String 
+{
+    fn format(&self) -> String 
+    {
+        format!("String: {}", &self)
+    }
+}
+
+/*
+fn print(Z:&Printable)
+{
+
+}
+*/
+
+// static dispatch
+// monomorphisation
+fn print_it<T:Printable>(z:T)
+{
+    println!("{}", z.format());
+}
 
