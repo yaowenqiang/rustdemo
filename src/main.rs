@@ -378,6 +378,11 @@ fn main() {
     println!("{}", ap.format());
     print_it(ap);
     print_it(bp);
+    let cc = 123;
+    let dd = "123".to_string();
+
+    print_it_too(&cc);
+    print_it_too(&dd);
 }
 
 fn operators() {
@@ -1086,3 +1091,9 @@ fn print_it<T:Printable>(z:T)
     println!("{}", z.format());
 }
 
+
+// dynamic dispatch
+fn print_it_too(z: &Printable) 
+{
+    println!("{}", z.format() );
+}
