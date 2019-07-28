@@ -394,6 +394,36 @@ fn main() {
         println!("Shape #{} has area {}", i, shape.area());
     }
 
+
+    //ownerships
+    let v = vec![1,2,3];
+    //let v2 = v;
+    
+    //println!("{:?}", v);
+    //println!("{:?}", v2);
+
+    let foo = |v:Vec<i32>| ();
+    //foo(v);
+    //let u = 1;
+    //let u2 = u;
+    //println!("{}", u);
+    let u = Box::new(1);
+    let u2 = u;
+    //println!("{}", u);
+
+    let print_vector = |x:Vec<i32> | -> Vec<i32>
+    {
+        println!("{:?}", x);
+        x
+    };
+    
+    let vv = print_vector(v);
+    println!("{}", vv[0]);
+    foo(v);
+
+
+
+
 }
 
 fn operators() {
@@ -1131,5 +1161,4 @@ impl Shape for Square {
         self.side * self.side
     }
 }
-
 
