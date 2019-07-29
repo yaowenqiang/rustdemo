@@ -2,7 +2,7 @@
 #[allow(unused_variables)]
 
 
-
+extern crate git2;
 mod structs;
 mod sh;
 mod pm;
@@ -14,6 +14,8 @@ use std::thread;
 use std::io::stdin;
 use std::mem;
 use std::ops::Add;
+use std::time::Duration;
+use git2::{Commit, ObjectType, Repository};
 
 const MEANING_OF_LIFE  :u8 = 42; // no  fixed address
 
@@ -419,7 +421,14 @@ fn main() {
     
     let vv = print_vector(v);
     println!("{}", vv[0]);
-    foo(v);
+    foo(vv);
+
+    let repo_root = std::env::args().nth(1).unwrap_or(".".to_string());
+    let repo = Repository::open(repo_root.as_str()).expect("Couldn't open repository");
+    println!("{} state={:?}", repo.path().display(), repo.state());
+    let commit = find_last_commit(&repo).expect("Cound't find last commit");
+    display_commit(&commit);
+
 
 
 
@@ -1161,4 +1170,19 @@ impl Shape for Square {
         self.side * self.side
     }
 }
+fn find_last_commit(repo: &Repository) -> Result<Commit, git2::Error> {
+    let obj = repo.head()?.resolve()?.peel(ObjectType::Commit)?;
+    obj.into_commit().map_err(|_| git2::Error::from_str("Couldn't find commit"))
+}
 
+fn display_commit(commit: &Commit) {
+    //let timestamp = commit.time().seconds();
+    //let tm = Duration::at(Duration::new(timestamp, 0));
+    //let tm = Duration::new(timestamp, 0);
+    //println!("commit{}\nAuthor: {}\nDate:    {}\n\n{}",
+    println!("commit: {}\nAuthor: {}\n\n{}",
+             commit.id(),
+             commit.author(),
+             //tm.rfc822(),
+             commit.message().unwrap_or("no commit message"));
+}
