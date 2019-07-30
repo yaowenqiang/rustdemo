@@ -1186,3 +1186,21 @@ fn display_commit(commit: &Commit) {
              //tm.rfc822(),
              commit.message().unwrap_or("no commit message"));
 }
+
+struct Person {
+    name: String
+}
+
+struct Company<'Z> {
+    name: String, 
+    ceo: &'Z Person
+}
+
+
+
+fn life_time()
+{
+    //&`static str;
+    let boss= Person {name: String::from("jack yao")};
+    let tersla = Company { name: String::from("Tesla"), ceo: &boss};
+}
