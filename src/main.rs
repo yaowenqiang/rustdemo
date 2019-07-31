@@ -16,6 +16,7 @@ use std::mem;
 use std::ops::Add;
 use std::time::Duration;
 use git2::{Commit, ObjectType, Repository};
+use std::rc::Rc;
 
 const MEANING_OF_LIFE  :u8 = 42; // no  fixed address
 
@@ -429,7 +430,7 @@ fn main() {
     let commit = find_last_commit(&repo).expect("Cound't find last commit");
     display_commit(&commit);
 
-
+    reference_count();
 
 
 
@@ -1188,7 +1189,8 @@ fn display_commit(commit: &Commit) {
 }
 
 struct Person {
-    name: String
+    //name: String
+    name: Rc<String>
 }
 
 struct Company<'Z> {
@@ -1201,6 +1203,37 @@ struct Company<'Z> {
 fn life_time()
 {
     //&`static str;
-    let boss= Person {name: String::from("jack yao")};
-    let tersla = Company { name: String::from("Tesla"), ceo: &boss};
+    //let boss= Person {name: String::from("jack yao")};
+    //let tersla = Company { name: String::from("Tesla"), ceo: &boss};
+    //TODO
+}
+
+impl Person{
+    fn new(name: Rc<String>) -> Person
+    {
+        Person {name: name}
+    }
+
+    fn greet (&self)
+    {
+        println!("Hi, my name is {}",self.name );
+    }
+
+}
+
+fn reference_count ()
+{
+    //let name = "Jon".to_string();    
+    let name = Rc::new("Jon".to_string());    
+    println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
+    {
+        let person = Person::new(name.clone());
+    println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
+        person.greet();
+    }
+    println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
+    //println!("name = {}",person.name);
+    //println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
+
+
 }
