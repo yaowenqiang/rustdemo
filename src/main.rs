@@ -17,6 +17,7 @@ use std::ops::Add;
 use std::time::Duration;
 use git2::{Commit, ObjectType, Repository};
 use std::rc::Rc;
+use std::sync::Arc;
 
 const MEANING_OF_LIFE  :u8 = 42; // no  fixed address
 
@@ -401,7 +402,7 @@ fn main() {
     //ownerships
     let v = vec![1,2,3];
     //let v2 = v;
-    
+
     //println!("{:?}", v);
     //println!("{:?}", v2);
 
@@ -419,7 +420,7 @@ fn main() {
         println!("{:?}", x);
         x
     };
-    
+
     let vv = print_vector(v);
     println!("{}", vv[0]);
     foo(vv);
@@ -430,7 +431,9 @@ fn main() {
     let commit = find_last_commit(&repo).expect("Cound't find last commit");
     display_commit(&commit);
 
-    reference_count();
+    //reference_count();
+    //
+    arc_demo();
 
 
 
@@ -541,7 +544,7 @@ fn for_loop()
 fn match_statement()
 {
     let country_code = 1000;
-    let country = match country_code 
+    let country = match country_code
     {
         44 => "UK",
         46 => "Sweden",
@@ -669,8 +672,8 @@ fn option ()
     let y = 0.0;
 
     // Some(z) None)
-    
-    let result:Option<f64> = 
+
+    let result:Option<f64> =
         if y != 0.0 {Some(x/y)} else {None};
     println!("{:?}", result);
     match result {
@@ -764,7 +767,7 @@ fn vectors () {
 
 }*/
 
-fn use_slice (slice: &mut [i32]) 
+fn use_slice (slice: &mut [i32])
 {    //& means borrow
     println!("first elem = {}, len = {}", slice[0], slice.len());
     slice[0] = 100;
@@ -878,24 +881,24 @@ fn tuples ()
 
 struct Point2 {
     x: f64,
-    y: f64 
+    y: f64
 }
 #[derive(Debug)]
 struct Point3<T> {
     x: T,
-    y: T 
+    y: T
 }
 
 #[derive(Debug)]
 struct Point4<T, V> {
     x: T,
-    y: V 
+    y: V
 }
 
 #[derive(Debug)]
 struct Point5<T> {
     x: T,
-    y: T 
+    y: T
 }
 #[derive(Debug)]
 struct Line2<T>
@@ -904,20 +907,20 @@ struct Line2<T>
     end: Point5<T>
 }
 
-fn generics() 
+fn generics()
 {
-   //let a = Point3{x:0, y:0}; 
-   //let a:Point3<i32> = Point3{x: 0, y:0 }; 
-   //let a:Point3<u16> = Point3{x: 0, y:1 }; 
-   let a:Point3<u16> = Point3{x: 0, y:1 }; 
-   //let b:Point3<f64> = Point3{x:1.2, y:1.4}; 
-   let b:Point3<f64> = Point3{x:1.2, y:1.4}; 
+   //let a = Point3{x:0, y:0};
+   //let a:Point3<i32> = Point3{x: 0, y:0 };
+   //let a:Point3<u16> = Point3{x: 0, y:1 };
+   let a:Point3<u16> = Point3{x: 0, y:1 };
+   //let b:Point3<f64> = Point3{x:1.2, y:1.4};
+   let b:Point3<f64> = Point3{x:1.2, y:1.4};
 
-   let c = Point3{x: 10, y:11 }; 
-   let d = Point3{x: 10.0, y:11.0 }; 
+   let c = Point3{x: 10, y:11 };
+   let d = Point3{x: 10.0, y:11.0 };
 
-   let e:Point4<i32,f64> = Point4{x: 12, y:13.0 }; 
-   let f:Point4<f64,i32> = Point4{x: 12.0, y:13 }; 
+   let e:Point4<i32,f64> = Point4{x: 12, y:13.0 };
+   let f:Point4<f64,i32> = Point4{x: 12.0, y:13 };
    println!("{:?}", a);
    println!("{:?}", b);
    println!("{:?}", c);
@@ -955,15 +958,15 @@ fn print_value(x:i32)
 
 fn functions ()
 {
-    print_value(2) ;   
+    print_value(2) ;
     println!("product 3 and 4 = {}", product(3,4));
 }
 
 impl Line {
     fn len(&self) -> f64
     {
-       let dx = self.start.x - self.end.x; 
-       let dy = self.start.y - self.end.y; 
+       let dx = self.start.x - self.end.x;
+       let dy = self.start.y - self.end.y;
        (dx*dx +  dy * dy).sqrt()
     }
 }
@@ -1031,7 +1034,7 @@ fn hof()
     }
     println!("the sum is {}", sum);
 
-    let sum2 = 
+    let sum2 =
         (0..).map(|x| x * x )
              .take_while(|&x| x < limit)
              .filter(|x| is_even(*x))
@@ -1065,7 +1068,7 @@ impl Animal for Human
     {
         self.name
     }
-    fn talk(&self) 
+    fn talk(&self)
     {
         println!("{} says hello",self.name());
     }
@@ -1114,15 +1117,15 @@ trait Printable {
 
 impl Printable for i32
 {
-    fn format(&self) -> String 
+    fn format(&self) -> String
     {
         format!("i32: {}", &self)
     }
 }
 
-impl Printable for String 
+impl Printable for String
 {
-    fn format(&self) -> String 
+    fn format(&self) -> String
     {
         format!("String: {}", &self)
     }
@@ -1144,7 +1147,7 @@ fn print_it<T:Printable>(z:T)
 
 
 // dynamic dispatch
-fn print_it_too(z: &Printable) 
+fn print_it_too(z: &Printable)
 {
     println!("{}", z.format() );
 }
@@ -1161,7 +1164,7 @@ trait Shape {
 }
 
 impl Shape for Circle {
-    fn area(&self) -> f64 
+    fn area(&self) -> f64
     {
         self.radius * self.radius * std::f64::consts::PI
     }
@@ -1190,11 +1193,12 @@ fn display_commit(commit: &Commit) {
 
 struct Person {
     //name: String
-    name: Rc<String>
+    //name: Rc<String>
+    name: Arc<String>
 }
 
 struct Company<'Z> {
-    name: String, 
+    name: String,
     ceo: &'Z Person
 }
 
@@ -1209,7 +1213,8 @@ fn life_time()
 }
 
 impl Person{
-    fn new(name: Rc<String>) -> Person
+    //fn new(name: Rc<String>) -> Person
+    fn new(name: Arc<String>) -> Person
     {
         Person {name: name}
     }
@@ -1223,17 +1228,32 @@ impl Person{
 
 fn reference_count ()
 {
-    //let name = "Jon".to_string();    
-    let name = Rc::new("Jon".to_string());    
-    println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
+    //let name = "Jon".to_string();
+    //let name = Rc::new("Jon".to_string());
+    //println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
     {
-        let person = Person::new(name.clone());
-    println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
-        person.greet();
+        //let person = Person::new(name.clone());
+    //println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
+        //person.greet();
     }
-    println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
+    //println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
     //println!("name = {}",person.name);
     //println!("Name = {}, name has {} strong pointers", name, Rc::strong_count(&name));
 
+
+}
+//Arc - Atomic reference count
+fn arc_demo()
+{
+    //let name = Rc::new("John".to_string());
+    let name = Arc::new("John".to_string());
+    let person = Person::new(name.clone());
+
+    let t = thread::spawn(move || {
+        person.greet();
+    });
+    println!("Name = {}", name);
+
+    t.join().unwrap();
 
 }
