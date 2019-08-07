@@ -435,8 +435,22 @@ fn main() {
     //
     arc_demo();
 
+    str_err();
 
 
+    let s = String::from("hello something");
+    takes_ownership(s);
+    //println!("{}", s);
+    let xs = 5;
+    make_copy(xs);
+    //println!("{}", xs);
+
+    let ss1 = gives_ownership();
+    let ss2 = String::from("strings from String");
+    let ss3 = takes_and_gives_back(ss2);
+    let s4 = String::from("hello calculate_length");
+    let (s5, len) = calculate_length(s4);
+    println!("{} {}", s5, len);
 }
 
 fn operators() {
@@ -1256,4 +1270,37 @@ fn arc_demo()
 
     t.join().unwrap();
 
+}
+
+fn str_err()
+{
+    let mut s1 = String::from("hello world");
+    let s2 = s1;
+    let s3 = s2.clone();
+    println!("{}", s2);
+    println!("{}", s3);
+}
+fn takes_ownership(some_thing: String)
+{
+    println!("{}", some_thing);
+}
+fn make_copy(some_integer: i32)
+{
+    println!("{}", some_integer);
+}
+
+fn gives_ownership() -> String
+{
+    let some_thing = String::from("from gives_ownership(");
+    some_thing
+}
+fn takes_and_gives_back(a_string: String) -> String
+{
+    a_string
+}
+
+fn calculate_length(s:String) -> (String, usize)
+{
+    let length = s.len();
+    (s, length)
 }
