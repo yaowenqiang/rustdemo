@@ -451,6 +451,13 @@ fn main() {
     let s4 = String::from("hello calculate_length");
     let (s5, len) = calculate_length(s4);
     println!("{} {}", s5, len);
+
+    let s11 = String::from("Hello, are you ok?");
+    let len = calculate_length2(&s11);
+    println!("{}", len);
+
+    let mut ss = String::from("new here");
+    change(&mut ss);
 }
 
 fn operators() {
@@ -1303,4 +1310,13 @@ fn calculate_length(s:String) -> (String, usize)
 {
     let length = s.len();
     (s, length)
+}
+
+fn calculate_length2(s: &String) -> usize {
+    s.len()
+}
+
+fn change(some_string: &mut String)
+{
+    some_string.push_str(", where are your");
 }
