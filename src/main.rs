@@ -458,6 +458,7 @@ fn main() {
 
     let mut ss = String::from("new here");
     change(&mut ss);
+    let reference_ton_nothign = dangle();
 }
 
 fn operators() {
@@ -1319,4 +1320,10 @@ fn calculate_length2(s: &String) -> usize {
 fn change(some_string: &mut String)
 {
     some_string.push_str(", where are your");
+}
+
+fn dangle() -> String {
+    let s = String::from("hello");
+    s
+    //&s
 }
