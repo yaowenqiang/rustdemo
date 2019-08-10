@@ -459,6 +459,23 @@ fn main() {
     let mut ss = String::from("new here");
     change(&mut ss);
     let reference_ton_nothign = dangle();
+
+    let mut s = String::from("hello.world.");
+    let word = first_word(&s);
+    //let hello = s[0..5];
+    //let word = s[0..11];
+    //slice
+    let hello = &s[0..5];
+    let word = &s[0..11];
+    //s.clear();
+    println!("{}", hello);
+    println!("{}", word);
+    let hello = &s[0..=5];
+    let word = &s[0..=11];
+    println!("{}", hello);
+    println!("{}", word);
+    //let hello = &s[0..5];
+    //let word = &s[0..11];
 }
 
 fn operators() {
@@ -1327,3 +1344,15 @@ fn dangle() -> String {
     s
     //&s
 }
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+    s.len()
+}
+
+
