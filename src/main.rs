@@ -527,6 +527,18 @@ println!(
     //area3(rectangle)
     rectangle2.area()
     );
+
+let pp1 = Point10{
+    x: 0.0, y:0.0
+};
+let pp2 = Point10{
+    x: 5.0,
+    y:0.5
+};
+
+println!("{}",pp1.distance(&pp2));
+println!("{}", (&pp1).distance(&pp2));
+
 }
 
 fn operators() {
@@ -1452,3 +1464,19 @@ fn area3(rectangle: &Rectangle) -> u32
     println!("{:#?}", rectangle);
     rectangle.width * rectangle.height
 }
+
+#[derive(Debug)]
+struct Point10 {
+    x:f64,
+    y:f64
+}
+
+impl Point10 {
+    pub fn distance(&self, other: &Point10) -> f64 {
+        let x_squared = f64::powi(other.x - self.x , 2);
+        let y_squared = f64::powi(other.y - self.y , 2);
+        f64::sqrt(x_squared + y_squared)
+    }
+}
+
+
