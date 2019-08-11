@@ -476,6 +476,57 @@ fn main() {
     println!("{}", word);
     //let hello = &s[0..5];
     //let word = &s[0..11];
+    let my_string = String::from("Hello world");
+    let word = first_wordv2(&my_string[..]);
+    let my_string_literal = "Hello world";
+    let word = first_wordv2(&my_string_literal[..]);
+
+    let word = first_wordv2(&my_string_literal);
+
+
+    /*
+    let user2 = User2{
+        email: "yaowenqiang112@163.com",
+        username: "yaowenqiang",
+        active:true,
+        sing_in_count:2
+    };
+    */
+let width1 = 30;
+let height1 = 50;
+
+println!(
+    "The area of the rectangle is {} square pixels",
+    area(width1, height1)
+    );
+
+let rect = (30,50);
+println!(
+    "The area of the rectangle is {} square pixels",
+    area2(rect)
+    );
+
+let rectangle = Rectangle{
+    width: 30,
+    height:50
+};
+
+println!(
+    "The area of the rectangle is {} square pixels",
+    //area3(rectangle)
+    area3(&rectangle)
+    );
+
+let rectangle2 = Rectangle{
+    width: 30,
+    height:50
+};
+
+println!(
+    "The area of the rectangle2 is {} square pixels",
+    //area3(rectangle)
+    rectangle2.area()
+    );
 }
 
 fn operators() {
@@ -1356,4 +1407,48 @@ fn first_word(s: &String) -> &str {
     &s[..]
 }
 
+fn first_wordv2(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    for(i, &item) in bytes.iter().enumerate(){
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    &s[..]
+}
 
+/*
+struct User2 {
+    username: &str,
+    email: &str,
+    sing_in_count: i64,
+    active: bool,
+}
+*/
+
+fn area(width: u32, height:u32) -> u32 {
+    width * height
+}
+
+fn area2(dimensions: (u32, u32)) -> u32 {
+    dimensions.0 * dimensions.1
+}
+
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height:u32
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+//fn area3(rectangle: Rectangle) -> u32
+fn area3(rectangle: &Rectangle) -> u32
+{
+    println!("{:#?}", rectangle);
+    rectangle.width * rectangle.height
+}
