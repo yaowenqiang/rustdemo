@@ -546,6 +546,22 @@ let rect3 = Rectangle{width:60, height:45};
 println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
 println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 let square = Rectangle::square(10);
+
+let four = IpAddrKind::V4;
+let six = IpAddrKind::V6;
+let home = IpAddr {
+    kind: IpAddrKind::V4,
+    address: String::from("127.0.0.1"),
+};
+println!("{:#?}", home);
+let loopback = IpAddr {
+    kind: IpAddrKind::V6,
+    address: String::from("::1"),
+
+};
+
+println!("{:#?}", loopback);
+
 }
 
 fn operators() {
@@ -1493,4 +1509,20 @@ impl Point10 {
     }
 }
 
+#[derive(Debug)]
+enum IpAddrKind {
+    V4,
+    V6
+}
+
+fn route(ip_type: IpAddrKind)
+{
+
+}
+
+#[derive(Debug)]
+struct IpAddr {
+    kind: IpAddrKind,
+    address: String,
+}
 
