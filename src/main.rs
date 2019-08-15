@@ -19,6 +19,8 @@ use git2::{Commit, ObjectType, Repository};
 use std::rc::Rc;
 use std::sync::Arc;
 
+//use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
+
 const MEANING_OF_LIFE  :u8 = 42; // no  fixed address
 
 static mut Z:i32 = 123;
@@ -561,6 +563,10 @@ let loopback = IpAddr {
 };
 
 println!("{:#?}", loopback);
+//show_ip();
+
+let m = Message::Write(String::from("hello"));
+m.call();
 
 }
 
@@ -1526,3 +1532,30 @@ struct IpAddr {
     address: String,
 }
 
+/*
+fn show_ip()
+{
+    let localhost_v4 = IpAddr::v4(Ipv4Addr::new(127,0.0.1));
+    let localhost_v6 = IpAddr::V6(Ipv6Addr::new(0,0,0,0,0,0,0,1));
+    assert_eq("127.0.0.1".parse(), Ok(localhost_v4));
+}
+*/
+enum Message {
+    Quit,
+    Move{x:i32, y:i32},
+    Write(String),
+    ChangeColor(i32, i32, i32)
+}
+impl Message {
+    fn call(&self)
+    {
+        println!("hello Mesage");
+    }
+}
+
+fn options()
+{
+    let some_number = Some(3);
+    let some_string = Some("a String");
+    let absent_numb : Option<i32> = None;
+}
