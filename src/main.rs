@@ -567,6 +567,8 @@ println!("{:#?}", loopback);
 
 let m = Message::Write(String::from("hello"));
 m.call();
+let coin = Coin::Nickel;
+println!("{}", value_in_cents(coin));
 }
 
 fn operators() {
@@ -1556,4 +1558,20 @@ fn options()
     let some_number = Some(3);
     let some_string = Some("a String");
     let absent_numb : Option<i32> = None;
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> u32 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
 }
