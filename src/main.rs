@@ -567,8 +567,14 @@ println!("{:#?}", loopback);
 
 let m = Message::Write(String::from("hello"));
 m.call();
-let coin = Coin::Nickel;
+let coin = Coin::Quarter(UsState::Alaska);
+
+println!("{:?}", coin);
+//coin.state = UsState::Alaska;
+
 println!("{}", value_in_cents(coin));
+//println!("{}", value_in_cents(coin));
+
 }
 
 fn operators() {
@@ -732,7 +738,6 @@ struct Line {
     start: Point,
     end: Point
 }
-
 enum Color {
     Red,
     Green,
@@ -1560,11 +1565,12 @@ fn options()
     let absent_numb : Option<i32> = None;
 }
 
+#[derive(Debug)]
 enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter,
+    Quarter(UsState),
 }
 
 fn value_in_cents(coin: Coin) -> u32 {
@@ -1572,6 +1578,16 @@ fn value_in_cents(coin: Coin) -> u32 {
         Coin::Penny => 1,
         Coin::Nickel => 5,
         Coin::Dime => 10,
-        Coin::Quarter => 25,
+        Coin::Quarter(state) => {
+            println!("State quater from {:?}",state);
+            25
+        },
     }
 }
+
+#[derive(Debug)]
+enum  UsState {
+    Alabama,
+    Alaska,
+}
+
