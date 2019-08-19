@@ -594,6 +594,8 @@ let another_u8_value = Some(0u8);
 if let Some(3) = another_u8_value {
     println!("three");
 }
+crate::sound::instrument::clarinet();
+sound::instrument::clarinet();
 
 }
 
@@ -1618,3 +1620,18 @@ fn plus_one(x:Option<i32>) -> Option<i32>
     }
 }
 
+mod sound {
+    fn guitar() {
+        println!("guitar") ;
+    }
+    pub mod instrument {
+        pub fn clarinet() {
+            println!("clarinet") ;
+        }
+        mod woodwind {
+        }
+    }
+    mod voice {
+
+    }
+} /* sound */
