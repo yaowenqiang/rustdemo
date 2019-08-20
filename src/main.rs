@@ -18,6 +18,10 @@ use std::time::Duration;
 use git2::{Commit, ObjectType, Repository};
 use std::rc::Rc;
 use std::sync::Arc;
+use std::collections::HashMap;
+
+use std::fmt::Result as FmtResult;
+use std::io::Result as IoResult;
 
 //use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 
@@ -607,6 +611,9 @@ println!("{:#?}", order1);
 let order2 = menu::Appetizer::Salad;
 println!("{:#?}", order2);
 
+let mut map = HashMap::new();
+map.insert(1,2);
+println!("{:?}", map);
 
 }
 
@@ -1669,4 +1676,12 @@ mod menu {
         Soup,
         Salad
     }
+}
+
+fn function1() -> FmtResult {
+    Ok(())
+}
+
+fn function2() ->IoResult<()> {
+    Ok(())
 }
