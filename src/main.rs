@@ -597,6 +597,17 @@ if let Some(3) = another_u8_value {
 crate::sound::instrument::clarinet();
 sound::instrument::clarinet();
 
+let v = plant::Vegatable::new("squash");
+//v.name = String::from("butternut squash");
+println!("{} are delicious!", v.name);
+println!("{}!", v.id);
+
+let order1 = menu::Appetizer::Soup;
+println!("{:#?}", order1);
+let order2 = menu::Appetizer::Salad;
+println!("{:#?}", order2);
+
+
 }
 
 fn operators() {
@@ -1627,6 +1638,7 @@ mod sound {
     pub mod instrument {
         pub fn clarinet() {
             println!("clarinet") ;
+            super::guitar();
         }
         mod woodwind {
         }
@@ -1635,3 +1647,26 @@ mod sound {
 
     }
 } /* sound */
+
+mod plant {
+    pub struct Vegatable {
+        pub name: String, 
+        pub id: i32,
+    }
+
+    impl Vegatable {
+        pub fn new(name: &str) -> Vegatable {
+            Vegatable {
+                name: String::from(name),
+                id: 1,
+            }
+        }
+    }
+}
+mod menu {
+    #[derive(Debug)]
+    pub enum Appetizer {
+        Soup,
+        Salad
+    }
+}
