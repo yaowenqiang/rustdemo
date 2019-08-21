@@ -19,9 +19,21 @@ use git2::{Commit, ObjectType, Repository};
 use std::rc::Rc;
 use std::sync::Arc;
 use std::collections::HashMap;
+//use std::collections::HashMap;
 
 use std::fmt::Result as FmtResult;
 use std::io::Result as IoResult;
+
+
+use std::cmp::Ordering;
+//use std::io;
+
+//use std::{cmp::Ordering, io};
+
+use std::io::{self, Write};
+
+use std::collections::*;
+
 
 //use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 
@@ -617,6 +629,8 @@ println!("{:?}", map);
 
 performance_group::clarinet_trio();
 performance_group::instrument::clarinet();
+let secrect_number = rand::thread_rng().gen_range(1,100);
+
 
 }
 
@@ -1698,3 +1712,4 @@ mod performance_group {
         instrument::clarinet();
     }
 } /* performance_group */
+
