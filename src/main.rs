@@ -2,6 +2,8 @@
 #[allow(unused_variables)]
 
 
+mod sound;
+
 extern crate git2;
 mod structs;
 mod sh;
@@ -1655,22 +1657,6 @@ fn plus_one(x:Option<i32>) -> Option<i32>
     }
 }
 
-mod sound {
-    fn guitar() {
-        println!("guitar") ;
-    }
-    pub mod instrument {
-        pub fn clarinet() {
-            println!("clarinet") ;
-            super::guitar();
-        }
-        mod woodwind {
-        }
-    }
-    mod voice {
-
-    }
-} /* sound */
 
 mod plant {
     pub struct Vegatable {
