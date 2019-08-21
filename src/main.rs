@@ -615,6 +615,9 @@ let mut map = HashMap::new();
 map.insert(1,2);
 println!("{:?}", map);
 
+performance_group::clarinet_trio();
+performance_group::instrument::clarinet();
+
 }
 
 fn operators() {
@@ -1685,3 +1688,13 @@ fn function1() -> FmtResult {
 fn function2() ->IoResult<()> {
     Ok(())
 }
+
+mod performance_group {
+    pub use crate::sound::instrument;
+
+    pub fn clarinet_trio() {
+        instrument::clarinet();
+        instrument::clarinet();
+        instrument::clarinet();
+    }
+} /* performance_group */
