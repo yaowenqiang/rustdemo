@@ -3,7 +3,7 @@
 
 
 mod sound;
-
+mod performance_group;
 extern crate git2;
 mod structs;
 mod sh;
@@ -1688,14 +1688,4 @@ fn function1() -> FmtResult {
 fn function2() ->IoResult<()> {
     Ok(())
 }
-
-mod performance_group {
-    pub use crate::sound::instrument;
-
-    pub fn clarinet_trio() {
-        instrument::clarinet();
-        instrument::clarinet();
-        instrument::clarinet();
-    }
-} /* performance_group */
 
