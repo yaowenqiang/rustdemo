@@ -28,6 +28,9 @@ use std::io::Result as IoResult;
 
 
 use std::cmp::Ordering;
+
+mod collections;
+
 //use std::io;
 
 //use std::{cmp::Ordering, io};
@@ -632,6 +635,8 @@ println!("{:?}", map);
 performance_group::clarinet_trio();
 performance_group::instrument::clarinet();
 let secrect_number = rand::thread_rng().gen_range(1,100);
+
+collections::show_vctor();
 
 
 }
