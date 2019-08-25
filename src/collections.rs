@@ -77,6 +77,19 @@ pub fn show_vctor () {
     let s6 = format!("{}-{}-{}-{}", s2, s3, s4, s5);
     println!("\n\nformated string: {}", s6);
 
+    let ch_string = String::from("这个是中文");
+    println!("{}", ch_string.len());
+
+    let en_string = String::from("this is english");
+    println!("{}", en_string.len());
+
+    for c  in ch_string.chars() {
+        println!("{}", c);
+    }
+    
+    for b  in ch_string.bytes() {
+        println!("{}", b);
+    }
 
 
 
