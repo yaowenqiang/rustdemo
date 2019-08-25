@@ -56,4 +56,27 @@ pub fn show_vctor () {
 
     println!("{:?}",row);
 
+
+    let mut s = String::new();
+    let data = "s1 initial contents";
+    let s1 = data.to_string();
+
+    let s2 = "s2 initial contents".to_string();
+
+    let s3 = String::from("initial contents");
+
+    let mut s4  = String::from("foo");
+    s4.push_str("bar");
+    println!("{}", s4);
+
+    let s5 = s1 + " " + &s2;
+    println!("s5: {}", s5);
+    println!("s2: {}", s2);
+    //println!("s1: {}", s1);
+
+
+
+
+
+
 }
