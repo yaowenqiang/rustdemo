@@ -74,6 +74,9 @@ pub fn show_vctor () {
     println!("s2: {}", s2);
     //println!("s1: {}", s1);
 
+    let s6 = format!("{}-{}-{}-{}", s2, s3, s4, s5);
+    println!("\n\nformated string: {}", s6);
+
 
 
 
