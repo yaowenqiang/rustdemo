@@ -3,6 +3,7 @@
 
 
 mod sound;
+mod hashmap;
 mod performance_group;
 extern crate git2;
 mod structs;
@@ -638,6 +639,7 @@ let secrect_number = rand::thread_rng().gen_range(1,100);
 
 collections::show_vctor();
 
+hashmap::show_hash_map();
 
 }
 
