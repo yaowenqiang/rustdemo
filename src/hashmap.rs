@@ -63,6 +63,9 @@ pub fn show_hash_map()
 
 
     println!("{:#?}", &map);
+    //panic!("crash and burn");
+    //let v = vec![1,2,3];
+    //v[100];
 
 }
 
