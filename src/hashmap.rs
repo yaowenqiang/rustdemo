@@ -93,3 +93,15 @@ pub fn show_hash_map()
 
 }
 
+pub fn open() {
+    let f = Fill::open("file.txt").map_err(|err| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("file.txt").unwrap_or_else(|error| {
+                panic!("tried to create file but there was a problem: {:?}", error);
+            })
+        } else {
+            painc!("There was a  problem opening the file : {:?}", error);
+        } 
+    });
+}
+
