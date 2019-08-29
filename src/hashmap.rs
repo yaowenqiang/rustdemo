@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::fs::File;
+use std::io::ErrorKind;
 pub fn show_hash_map()
 {
     let mut  scores = HashMap::new();
@@ -69,11 +70,24 @@ pub fn show_hash_map()
     //v[100];
     
     //let f = File::open("hello.txt");
-    let f = File::open("empty.txt");
+    let f = File::open("/tmp/empty.txt");
     let f = match f {
         Ok(file) =>file ,
         Err(error) => {
+            //println!("empty.txt does not exist")
             panic!("There was a problem opening the file {:?}", error)
+        },
+    };
+
+    let f = File::open("empty.txt");
+    let f = match f {
+        Ok(file) =>file ,
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create("hello.txt") {
+                Ok(fc) => fc,
+                Err(e) => panic!("Tried to create file but there was a problem: {:?}", e)
+            },
+            other_error => panic!("There was a problem opening the file: {:?}", other_error),
         },
     };
 
