@@ -94,14 +94,21 @@ pub fn show_hash_map()
 }
 
 pub fn open() {
-    let f = Fill::open("file.txt").map_err(|err| {
-        if error.kind() == ErrorKind::NotFound {
+    let f = File::open("file.txt").map_err(|err| {
+        if err.kind() == ErrorKind::NotFound {
             File::create("file.txt").unwrap_or_else(|error| {
                 panic!("tried to create file but there was a problem: {:?}", error);
             })
         } else {
-            painc!("There was a  problem opening the file : {:?}", error);
+            panic!("There was a  problem opening the file : {:?}", err);
         } 
     });
 }
 
+pub fn open_with_unwrap() {
+    let f = File::open("not_exists.txt").unwrap();
+}
+
+pub fn open_with_expect() {
+    let f = File::open("not_exists.txt").expect("file not_exists.txt does not exists.");
+}
