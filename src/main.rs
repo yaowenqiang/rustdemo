@@ -643,7 +643,12 @@ hashmap::show_hash_map();
 hashmap::show_hash_map();
 
 //hashmap::open_with_unwrap();
-hashmap::open_with_expect();
+//hashmap::open_with_expect();
+let hello = match hashmap::read_username_from_file()   {
+    Ok(txt) => txt,
+    Err(_) => String::from("error")
+};
+println!("{:?}", hello);
 
 }
 
