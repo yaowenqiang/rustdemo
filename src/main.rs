@@ -2,6 +2,7 @@
 #[allow(unused_variables)]
 
 
+mod gtype;
 mod sound;
 mod hashmap;
 mod performance_group;
@@ -31,6 +32,8 @@ use std::io::Result as IoResult;
 use std::cmp::Ordering;
 
 mod collections;
+
+//use std::net::IpAddr;
 
 //use std::io;
 
@@ -158,6 +161,7 @@ fn multiplication_print_result(x: i32, y: i32) {
    // println!("{:?}", x*y );
     println!("{:?}", multiplication(x, y));
 }
+//fn main() ->Result<(), Box<dyn Error>>{
 fn main() {
     let user_type = some_crate::UserType::Regular;
     println!("user type is {:?}\n", user_type);
@@ -650,8 +654,14 @@ let hello = match hashmap::read_username_from_file()   {
 };
 println!("{:?}", hello);
 let username = hashmap::read_username_from_file2();
-println!("username: {}", s)
+println!("username: {}", s);
 
+//let f = File::open("empty.txt")?;
+
+
+//let home: IpAddr = "127.0.0.1".parse().unwrap();
+//prinln!("{}", IpAddr);
+gtype::show();
 }
 
 fn operators() {

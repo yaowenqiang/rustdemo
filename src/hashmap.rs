@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use std:;fs;
+use std::fs;
 use std::fs::File;
 use std::io;
 use std::io::ErrorKind;
@@ -143,3 +143,10 @@ pub  fn read_username_from_file2() -> Result<String, io::Error> {
 pub  fn read_username_from_file3() -> Result<String, io::Error> {
     fs::read_to_string("hello.txt")
 }
+
+/*
+pub  fn read_username_from_file4()-> Result<String, io::Error> {
+    File::open("hello4.txt")?
+}
+*/
+
