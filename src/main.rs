@@ -649,6 +649,8 @@ let hello = match hashmap::read_username_from_file()   {
     Err(_) => String::from("error")
 };
 println!("{:?}", hello);
+let username = hashmap::read_username_from_file2();
+println!("username: {}", s)
 
 }
 
