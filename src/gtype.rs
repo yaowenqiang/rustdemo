@@ -13,7 +13,19 @@ pub fn show () {
 
     let number_list2 = vec![34,50, 25, 100,65];
     let largest_number2 =  largest(&number_list2);
+    let largest_number3 =  largest1(&number_list2);
     println!("largest_number2 {}", largest_number2);
+    println!("largest_number3 {}", largest_number3);
+
+    let char_list = vec!['y','m','a','q'];
+    let result = largest_char(&char_list);
+    //let result1 = largest1(&char_list);
+    println!("result1: The largest char is {} ", result);
+    //println!("result2: The largest char is {} ", result1);
+
+    let integer = Point{x:5, y:10};
+    let float = Point{x:1.0, y:4.0};
+
 }
 
 pub fn largest(list: &[i32]) -> i32 {
@@ -25,3 +37,30 @@ pub fn largest(list: &[i32]) -> i32 {
     }
     larget_number
 }
+
+pub fn largest_char(list: &[char]) -> char {
+    let mut largest = list[0];
+
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
+
+pub fn largest1<T>(list: &[T]) -> T {
+    let mut largest = list[0];
+
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
+pub struct Point<T> {
+    x:T,
+    y:T,
+}
+
