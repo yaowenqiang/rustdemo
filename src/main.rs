@@ -662,6 +662,18 @@ println!("username: {}", s);
 //let home: IpAddr = "127.0.0.1".parse().unwrap();
 //prinln!("{}", IpAddr);
 gtype::show();
+let p = gtype::Point{x:1,y:2};
+println!("{}", p.x());
+println!("{}", p.y());
+
+let p2 = gtype::Point{x:"abc",y:"def"};
+println!("{}", p2.x());
+println!("{}", p2.y());
+
+let p3 = gtype::Point{x:1.0,y:2.0000000};
+println!("{:#?}", p3.x());
+println!("{:#?}", p3.y());
+
 }
 
 fn operators() {

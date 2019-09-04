@@ -13,9 +13,9 @@ pub fn show () {
 
     let number_list2 = vec![34,50, 25, 100,65];
     let largest_number2 =  largest(&number_list2);
-    let largest_number3 =  largest1(&number_list2);
+    //let largest_number3 =  largest1(&number_list2);
     println!("largest_number2 {}", largest_number2);
-    println!("largest_number3 {}", largest_number3);
+    //println!("largest_number3 {}", largest_number3);
 
     let char_list = vec!['y','m','a','q'];
     let result = largest_char(&char_list);
@@ -49,18 +49,31 @@ pub fn largest_char(list: &[char]) -> char {
     largest
 }
 
+/*
 pub fn largest1<T>(list: &[T]) -> T {
-    let mut largest = list[0];
+    //let mut largest = list[0];
 
     for &item in list.iter() {
         if item > largest {
             largest = item;
         }
     }
-    largest
-}
-pub struct Point<T> {
-    x:T,
-    y:T,
-}
+    //largest
+    //&list[0]
+}*/
 
+pub struct Point<T> {
+    pub x:T,
+    pub y:T,
+}
+impl<T> Point<T> {
+    pub fn x(&self) -> &T
+    {
+        &self.x
+    }
+
+    pub fn y(&self) -> &T
+    {
+        &self.y
+    }
+}
