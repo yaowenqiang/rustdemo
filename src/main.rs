@@ -674,6 +674,14 @@ let p3 = gtype::Point{x:1.0,y:2.0000000};
 println!("{:#?}", p3.x());
 println!("{:#?}", p3.y());
 
+let tweet = Tweet{
+    username: String::from("hourse_ebooks"),
+    content: String::from("of course, as you probably already know ,people"),
+    reply: false,
+    retweet: false,
+};
+println!("1 new tweet: {}", tweet.summarize());
+
 }
 
 fn operators() {
