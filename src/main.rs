@@ -2,6 +2,7 @@
 #[allow(unused_variables)]
 
 
+mod lib;
 mod gtype;
 mod sound;
 mod hashmap;
@@ -674,13 +675,26 @@ let p3 = gtype::Point{x:1.0,y:2.0000000};
 println!("{:#?}", p3.x());
 println!("{:#?}", p3.y());
 
-let tweet = Tweet{
+let tweet = lib::Tweet{
     username: String::from("hourse_ebooks"),
     content: String::from("of course, as you probably already know ,people"),
     reply: false,
     retweet: false,
 };
-println!("1 new tweet: {}", tweet.summarize());
+//TODO
+//println!("1 new tweet: {}", tweet.summarize());
+
+
+let article = lib::NewArticle{
+    headline: String::from("Penguins win the stanley Cup champinship!"),
+    location: String::from("Pittsburgh, PA, USA"),
+    author: String::from("Iceburgh"),
+
+    content: String::from("The Pittsburgh Penguins once again are the best hockey team in teh NH>"),
+};
+
+println!("New article available: {}", article.summarize());
+
 
 }
 
@@ -1736,4 +1750,5 @@ fn function1() -> FmtResult {
 fn function2() ->IoResult<()> {
     Ok(())
 }
+
 
