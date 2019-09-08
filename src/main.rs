@@ -688,13 +688,15 @@ let tweet = lib::Tweet{
 let article = lib::NewArticle{
     headline: String::from("Penguins win the stanley Cup champinship!"),
     location: String::from("Pittsburgh, PA, USA"),
-    author: String::from("Iceburgh"),
-
+    author:  String::from("Iceburgh"),
     content: String::from("The Pittsburgh Penguins once again are the best hockey team in teh NH>"),
 };
 
-println!("New article available: {}", article.summarize());
+//println!("New article available: {}", article.summarize());
+//println!("New article available: {}", article.summarize());
 
+println!("{:#?}", article);
+println!("New article available: {}", article.summarize_author());
 
 }
 
