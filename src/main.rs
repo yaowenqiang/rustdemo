@@ -698,6 +698,9 @@ let article = lib::NewArticle{
 println!("{:#?}", article);
 println!("New article available: {}", article.summarize_author());
 
+
+Summary::largest_test_demo();
+
 }
 
 fn operators() {
