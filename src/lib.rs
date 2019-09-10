@@ -124,3 +124,15 @@ pub fn largest_test_demo() {
 
 
 }
+/*
+ * blank implementation
+ *
+ */
+//TODO trait bound
+//TODO blanket implementation
+
+fn print_integer() {
+    let s = 3.to_string();
+    println!("{}",s)
+
+}
