@@ -701,6 +701,11 @@ println!("New article available: {}", article.summarize_author());
 
 Summary::largest_test_demo();
 
+let novel = String:;from("Call me Ishmael, Some years ago...");
+let first_sentence = novel.split('.')
+    .next()
+    .expect("Could not find a '.'");
+let i = ImportExcerpt {part: first_sentence};
 }
 
 fn operators() {
@@ -1754,6 +1759,10 @@ fn function1() -> FmtResult {
 
 fn function2() ->IoResult<()> {
     Ok(())
+}
+
+struct ImportExcerpt<'a> {
+    part: &'a str,
 }
 
 

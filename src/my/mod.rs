@@ -31,7 +31,7 @@ pub fn function_liftcycle () {
     }
 }
 
-pub fn longest(x: &str, y: &str) -> &str {
+pub fn longest<'a>(x: &str, y: &str) -> &'a &str {
     if x.len() > y.len() {
         x   
     } else {
@@ -39,7 +39,7 @@ pub fn longest(x: &str, y: &str) -> &str {
     }
 }
 
-fn longest2<`a>(x: &`a str, y: &`a str) -> &'a str {
+fn longest2<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
     } else {

@@ -1,3 +1,5 @@
+use std::fmt::Display;
+use std::fmt::Debug;
 pub trait Summary {
     //fn summarize(&self) -> String;
 
@@ -63,13 +65,13 @@ pub fn notify4<T: Summary + Display>(item: T) {
 }
 
 pub fn some_function<T: Display + Clone, U: Clone + Debug>(t: T, u:U) -> i32 {
-    
+   1 
 }
 fn some_function2<T,U>(t:T, u:U) -> i32 
-    where T: Display + Cone,
+    where T: Display + Clone,
           U: Clone + Debug
 {
-
+    1
 }
 
 
@@ -77,11 +79,11 @@ pub fn return_summarizeable() -> impl Summary {
     Tweet {
         username:  String::from("horse_ebooks"),
         content: String::from("of course ,as you probably already know, people"),
-        replay: false,
+        reply: false,
         retweet: false,
     }
 }
-
+/* TODO
 fn return_summarizeable2(switch: bool) -> impl Summary {
    if switch {
        NewArticle {
@@ -94,21 +96,36 @@ fn return_summarizeable2(switch: bool) -> impl Summary {
        Tweet {
            username: String::from("username"),
            content: String::from("content"),
-           replay: false,
+           reply: false,
            retweet: false,
        }
 
    }
 }
 
+*/
+
 fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
    let mut largest = list[0];
 
-   for &item  in list.iter() {
+   for &item in list.iter() {
        if item > largest {
            largest = item;
        }
    }
+   largest
+}
+
+fn largest2<'a>(x: &'a &str, y: &str) -> &'a str {
+   x 
+}
+
+fn largest3<'a>(x: &'a &str, y: &str) ->  String {
+    //TODO 
+    //let result = String::from("really long string");
+    //&result.as_str()
+    //&result
+    "really long string".to_string()
 }
 
 pub fn largest_test_demo() {
